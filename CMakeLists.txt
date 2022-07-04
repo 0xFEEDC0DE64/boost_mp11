@@ -2,6 +2,8 @@
 # Distributed under the Boost Software License, Version 1.0.
 # See accompanying file LICENSE_1_0.txt or copy at http://www.boost.org/LICENSE_1_0.txt
 
+if(NOT DEFINED IDF_TARGET)
+
 cmake_minimum_required(VERSION 3.5...3.16)
 
 project(boost_mp11 VERSION 1.80.0 LANGUAGES CXX)
@@ -62,5 +64,14 @@ endif()
 if(BUILD_TESTING)
 
   add_subdirectory(test)
+
+endif()
+
+else()
+
+idf_component_register(
+    INCLUDE_DIRS
+        include
+)
 
 endif()
